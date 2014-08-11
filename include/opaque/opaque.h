@@ -34,12 +34,17 @@
 #define LIBOPAQUE_H
 
 #include <cassert>
+#include <utility>
 
 /*
  * Version history:
  * 1. Initial version based on the PIMPL macros from Doomsday.
  */
 #define OPAQ_VERSION 1
+
+#if !defined(NDEBUG) || defined(_DEBUG)
+#  define OPAQ_DEBUG
+#endif
 
 namespace opaq {
 
@@ -87,9 +92,9 @@ namespace opaq {
  */
 struct IPrivate {
     virtual ~IPrivate() {}
-#ifdef _DEBUG
+#ifdef OPAQ_DEBUG
     unsigned int _privateInstVerification;
-#define OPAQ_IPRIVATE_VERIFICATION 0xbeefdead
+#define OPAQ_IPRIVATE_VERIFICATION 0xBEEFDEAD
     IPrivate() : _privateInstVerification(OPAQ_IPRIVATE_VERIFICATION) {}
     unsigned int privateInstVerification() const { return _privateInstVerification; }
 #endif
@@ -141,7 +146,7 @@ public:
     bool isNull() const {
         return !ptr;
     }
-#ifdef _DEBUG
+#ifdef OPAQ_DEBUG
     bool isValid() const {
         return ptr && reinterpret_cast<IPrivate *>(ptr)->privateInstVerification() == OPAQ_IPRIVATE_VERIFICATION;
     }

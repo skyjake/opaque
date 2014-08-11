@@ -1,0 +1,11 @@
+prefix=/Users/Shared/SDK/opaque
+exec_prefix=${prefix}
+#libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: opaque
+Description: Templates and macros for private implementations (C++11)
+Version: 1
+#Libs: -L${libdir} -lpng16
+#Libs.private: -lz 
+Cflags: -I${includedir}

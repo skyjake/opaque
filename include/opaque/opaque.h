@@ -34,6 +34,7 @@
 #define LIBOPAQUE_H
 
 #include <cassert>
+#include <algorithm>
 #include <utility>
 
 /*

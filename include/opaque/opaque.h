@@ -40,8 +40,9 @@
 /*
  * Version history:
  * 1. Initial version based on the PIMPL macros from Doomsday.
+ * 2. Non-null private instance required at construction time.
  */
-#define OPAQ_VERSION 1
+#define OPAQ_VERSION 2
 
 #if !defined(NDEBUG) || defined(_DEBUG)
 #  define OPAQ_DEBUG

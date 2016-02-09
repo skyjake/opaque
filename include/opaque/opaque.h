@@ -1,7 +1,7 @@
 /**
  * @file opaque.h  Macros and C++11 templates for opaque private implementations.
  *
- * @author Copyright (c) 2014 Jaakko Keränen <jaakko.keranen@iki.fi>
+ * @author Copyright (c) 2014-2016 Jaakko Keränen <jaakko.keranen@iki.fi>
  *
  * @par License
  * BSD: http://opensource.org/licenses/BSD-2-Clause
@@ -110,7 +110,7 @@ template <typename T>
 class PrivateAutoPtr
 {
 public:
-    PrivateAutoPtr(T *p = 0) : ptr(p) {}
+    PrivateAutoPtr(T *p) : ptr(p) {}
     ~PrivateAutoPtr() { reset(); }
     
     PrivateAutoPtr(PrivateAutoPtr const &) = delete; // no copy

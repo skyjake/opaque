@@ -41,8 +41,9 @@
  * Version history:
  * 1. Initial version based on the PIMPL macros from Doomsday.
  * 2. Non-null private instance required at construction time.
+ * 3. Removed global Public typedefs.
  */
-#define OPAQ_VERSION 2
+#define OPAQ_VERSION 3
 
 #if !defined(NDEBUG) || defined(_DEBUG)
 #  define OPAQ_DEBUG
@@ -67,7 +68,6 @@ namespace opaq {
 * </pre>
 */
 #define OPAQ_IMPLEMENT(ClassName) \
-    typedef ClassName Public; \
     struct ClassName::Instance : public opaq::Private<ClassName>
 
 /**
@@ -164,6 +164,7 @@ private:
  */
 template <typename T>
 struct Private : public IPrivate {
+    using Public = T;
     T &self;
 #define this_public (&self)      // To be used inside private implementations.
 
